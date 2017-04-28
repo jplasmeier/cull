@@ -4,8 +4,8 @@ import os
 import pandas as pd
 import shutil
 
-ASSET_PATH = '/home/jgp/rone/assets'
-DATA_PATH = '/home/jgp/srproj/data'
+ASSET_PATH = '/home/jgp/geocivics/rone/assets'
+DATA_PATH = '/home/jgp/geocivics/srproj/data'
 
 asset_files = os.listdir(ASSET_PATH) 
 asset_paths = [os.path.join(ASSET_PATH, x) for x in asset_files if x[-3:] == 'csv']
@@ -34,7 +34,9 @@ def apply_regex(filepath, regex_list):
 
 def dump_to_csv(df, csv_path):
     # Dump to csv
-    df.to_csv(csv_path)
+    print("dumping keys: ", df.keys())
+    print("first row: ", df.head(3))
+    df.to_csv(csv_path, index=False)
 
 if __name__ == '__main__':
     regex_list = ['L4', 'RPY', 'CIP', 'NPT4', 'WDRAW', 'NUM4', 'C150', '_INC_', 'TRANS', '_RT']
